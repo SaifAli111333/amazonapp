@@ -16,8 +16,8 @@ function AdminRefunded() {
   const [rows, setRows] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [rowSelectionModel, setRowSelectionModel] = useState([]);
-  const [NoRowsLabel, setNoRowsLabel] = useState(false);
-  const [selectedRowsData, setSelectedRowsData] = useState([]);
+  //const [ setNoRowsLabel] = useState(false);
+  const [ setSelectedRowsData] = useState([]);
 
   const onRowsSelectionHandler = (ids) => {
     const selectedRows = ids.map((id) => rows.find((row) => row.id === id));
@@ -49,19 +49,16 @@ function AdminRefunded() {
 
         setRows(mappedOrders);
         setIsLoading(false);
-        setNoRowsLabel(mappedOrders.length === 0); 
+        //setNoRowsLabel(mappedOrders.length === 0); 
       } catch (err) {
         console.error('Error fetching orders', err);
         setIsLoading(false);
-        setNoRowsLabel(true);
+       // setNoRowsLabel(true);
       }
     };
 
     fetchOrders();
   }, []);
-  const handleViewClick = (productId) => {
-    navigate(`/product-overview/${productId}`);
-  };
 
   const columns = [
     { field: 'OrderID', headerName: 'Order ID', width: 100 },
@@ -107,7 +104,7 @@ function AdminRefunded() {
           padding: '15px',
           backgroundColor: 'white',
           height: 'auto',
-          overflow: 'hidden', // Prevent overflow from parent Grid
+          overflow: 'hidden', 
         }}
       >
         <Grid container justifyContent="center">
